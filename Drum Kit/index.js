@@ -7,6 +7,9 @@ while(i<document.querySelectorAll(".drum").length){
         console.log(this.style.color="white ");
         var buttoninnerHTMl= this.innerHTML;
         makeSound(buttoninnerHTMl); 
+        
+         //calling animation fucntion
+        buttonAnimation(buttoninnerHTMl); 
      
     });
     i++;
@@ -17,6 +20,8 @@ while(i<document.querySelectorAll(".drum").length){
 // Detecting keyboard press
 document.addEventListener("keydown",function(event){
     makeSound(event.key);
+    //calling animation function
+    buttonAnimation(event.key);
 })
 
 
@@ -63,6 +68,21 @@ function makeSound(key){
             break;
     }
 
+
+}
+
+//adding animations to buttons
+
+function buttonAnimation(currentKey){
+    var activeButton = document.querySelector("."+currentKey);
+    //adding pressed class to our activeButton---
+    activeButton.classList.add("pressed"); 
+    
+    //setting timeOut for aniamtion back to original
+
+    setTimeout(function(){
+        activeButton.classList.remove("pressed")
+    } , 100);
 
 }
 
